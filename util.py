@@ -1,4 +1,4 @@
-def get_out_nested_list_from_string(ints_list):
+def get_out_nested_list_from_list(ints_list):
     print(len(ints_list))
     our_list = list()
     for i in range(3):
