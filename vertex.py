@@ -22,5 +22,5 @@ class Vertex:
     def get_coordinates(self):
         return self.__coordinates
 
-    def get_neighbors(self):
+    def get_neighbours(self):
         return self.__set_of_neighbours

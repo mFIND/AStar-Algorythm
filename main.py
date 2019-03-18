@@ -42,3 +42,7 @@ print("3rd: ", type(other_edge), other_edge)
 
 print(start_end_coords)
 print(graph)
+print(graph[0])
+print(graph[0].get_coordinates())
+print(graph[0].get_neighbours())
+
