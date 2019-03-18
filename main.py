@@ -8,9 +8,9 @@ TEMPORARY_FILENAME = "~temp_file.txt"
 
 edges = [
         [[0, 0, 0], [4, 5, 6], 4],
-        [[1, 2, 8], [1, 3, 9], 6],
-        [[9, 7, 1], [4, 7, 1], 3],
-        [[5, 3, 4], [4, 0, 4], 9],
+        [[4, 5, 6], [1, 3, 9], 6],
+        [[4, 7, 1], [1, 3, 9], 3],
+        [[4, 7, 1], [4, 0, 4], 9],
         ]
 
 with open(TEMPORARY_FILENAME, "w") as temp_file:  # write, not append
@@ -20,11 +20,12 @@ with open(TEMPORARY_FILENAME, "w") as temp_file:  # write, not append
 list_reader = ListReader(TEMPORARY_FILENAME)
 other_edge = list_reader.get_list()
 graphGenerator = GraphGenerator(other_edge)
+
 graph = graphGenerator.create_graph()
+start_end_coords = graphGenerator.get_start_and_finish_coordinates()
 
 del list_reader
 del graphGenerator
-
 
 """ lets live that there so we can later check what method is actually faster"""
 # temp_edge = [int(s) for s in temp_str.replace('[', '').replace(']', '').split(',')]
@@ -39,4 +40,5 @@ print("Let's compare initial and read-from-file lists:")
 print("1st: ", type(edges), edges)
 print("3rd: ", type(other_edge), other_edge)
 
+print(start_end_coords)
 print(graph)

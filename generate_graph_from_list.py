@@ -1,5 +1,6 @@
 from vertex import *
 
+
 class GraphGenerator:
     __list = None
     __x_dim = None
@@ -12,18 +13,22 @@ class GraphGenerator:
         self.__x_dim = len(list[0])
         self.__vertex_dict = {}
 
+    def get_start_and_finish_coordinates(self):
+        return self.__list[0][0], self.__list[self.__y_dim - 1][1]
+
     def create_graph(self):
         for edge in self.__list:
             ver = []
             for i in range(2):
-                if str(edge[0]) in self.__vertex_dict:
-                    ver.append(self.__vertex_dict[str(edge[0])])
+                if str(edge[i]) in self.__vertex_dict:
+                    ver.append(self.__vertex_dict[str(edge[i])])
                 else:
-                    ver.append(Vertex(edge[0]))
-                    self.__vertex_dict.update({str(edge[0]): ver[len(ver)-1]})
+                    ver.append(Vertex(edge[i]))
+                    self.__vertex_dict.update({str(edge[i]): ver[len(ver) - 1]})
             ver[0].add_new_neighbours(ver[1], edge[2])
             ver[1].add_new_neighbours(ver[0], edge[2])
-        return self.__list[0][0], self.__list[self.__y_dim - 1][1]
+        return self.__vertex_dict[str(self.__list[0][0])], \
+               self.__vertex_dict[str(self.__list[len(self.__list) - 1][1])]
 
 
 """
