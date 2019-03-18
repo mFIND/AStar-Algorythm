@@ -1,3 +1,6 @@
+""" lets live that there so we can later check what method is actually faster"""
+
+
 def get_out_nested_list_from_list(ints_list):
     print(len(ints_list))
     our_list = list()
