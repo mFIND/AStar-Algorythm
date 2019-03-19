@@ -14,8 +14,20 @@ class ListReader:
         self.__list = list()
         with open(self.__file_name, "r") as temp_file:
             for line in temp_file:
-                line.replace('[]', '').split(',')
-                self.__list.append(list(eval(line)))
+                temp_list = [int(s) for s in line.replace('[', '').replace(']', '').split(',')]
+                self.__list.append(self.__get_nested_list_from_list(temp_list))
+
+    @staticmethod
+    def __get_nested_list_from_list(ints_list):
+        dimensions = int((len(ints_list) - 1) / 2)
+        out_list = list()
+        for i in range(2):
+            temp_list = []
+            for j in range(dimensions):
+                temp_list.append(ints_list[dimensions * i + j])
+            out_list.append(temp_list)
+        out_list.append(ints_list[dimensions * 2])
+        return out_list
 
     def get_list(self):
         return self.__list
