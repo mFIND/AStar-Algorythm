@@ -7,10 +7,16 @@ class ListReader:
     # The constructor is called to set up or initialize an object
     # self allows an object to refer to itself inside of the class
     def __init__(self, file_name):
+        """
+        :param file_name: filename of file that contain edges of a graph generated from graph_gen
+        """
         self.__file_name = file_name
         self.__read_list_from_file()
 
     def __read_list_from_file(self):
+        """
+        Used to read graph representation from file and convert it to format used in AStarAlgorithm
+        """
         self.__list = list()
         with open(self.__file_name, "r") as temp_file:
             for line in temp_file:
@@ -19,6 +25,12 @@ class ListReader:
 
     @staticmethod
     def __get_nested_list_from_list(ints_list):
+        """
+        Converts list of ints of odd length, where n is natural number, to return list containing 2 lists with
+        all ints except of 1, which is added at the end
+        :param ints_list: list of ints with odd length
+        :return: returns list with 2 nested lists and 1 integer
+        """
         dimensions = int((len(ints_list) - 1) / 2)
         out_list = list()
         for i in range(2):

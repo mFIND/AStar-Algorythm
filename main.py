@@ -16,7 +16,7 @@ else:
     from graph_gen import GraphGenerator as GraphGen
 
     graph_gen = GraphGen(spread=1, gauss_mean=0.00001, gauss_sigma=0.0001)
-    graph = graph_gen.generate_graph()
+    graph = graph_gen.generate_edges()
 
 print("Graph: ", graph)
 
@@ -24,8 +24,9 @@ AStar = AStarAlgorithm()
 solution = AStar.solve(graph)
 
 if solution is not None:
-    # print(type(solution[0]))
-    # print(type(solution[1]))
+    print(type(solution))
+    print(type(solution[0]))
+    print(type(solution[1]))
     print(solution[0])
     # print(solution[1])
 else:

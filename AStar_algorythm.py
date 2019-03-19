@@ -6,6 +6,14 @@ class AStarAlgorithm:
 
     @staticmethod
     def solve(edges):
+        """
+        :param edges: takes list{0} consisting of lists{1}, where list{1} represents an edge in a weighted graph.
+        For that, list{1} contains 2 lists{2}[0-1], and a weight as integer. lists{2} represent multidimensional points
+
+        :return: returns None, if no path was found, or tuple, where first element is string representing shortest path
+        consisting of sequence of multidimensional points separated with ' -> ', and a second element of the returned
+        tuple is a list of points in the same sequence as in first element of tuple
+        """
         graph_generator = ListToGraphGenerator(edges)
         graph = graph_generator.create_graph()
         del graph_generator

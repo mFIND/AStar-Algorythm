@@ -1,17 +1,20 @@
 class Vertex:
     __coordinates = None
     __list_of_neighbours = None
-    __extended = None
 
     def __init__(self, coordinates):
+        """
+        :param coordinates: coordinates of the vertex in hyperdimension
+        """
         self.__coordinates = coordinates
         self.__list_of_neighbours = list()
-        self.__extended = False
-
-    def is_visited(self):
-        return self.__extended
 
     def add_new_neighbours(self, other_vertex, weight):
+        """
+        Adds an directional weighted edge to a neighbour
+        :param other_vertex: neighbouring vertex
+        :param weight: weight of the edge
+        """
         if (other_vertex, weight) not in self.__list_of_neighbours:
             self.__list_of_neighbours.append((other_vertex, weight))
 
