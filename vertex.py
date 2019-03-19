@@ -14,11 +14,6 @@ class Vertex:
     def add_new_neighbours(self, other_vertex, weight):
         if (other_vertex, weight) not in self.__list_of_neighbours:
             self.__list_of_neighbours.append((other_vertex, weight))
-    # if (other_vertex, weight) not in self.__list_of_neighbours:
-    #    self.__list_of_neighbours.add((other_vertex, weight))
-    #    return True
-    # else:
-    #    return False        # TODO needed? might be used to check if data was correct
 
     def get_coordinates(self):
         return self.__coordinates

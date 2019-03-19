@@ -1,6 +1,3 @@
-from vertex import *
-
-
 class PathFinder:
     __start = None
     __finish = None
@@ -33,8 +30,8 @@ class PathFinder:
         return string, out_list
 
     def __sort_border_points(self):
-        temp_list = sorted(self.__border_points_list, key=lambda x: x[1] + self.__heuristic_distance(x[0], self.__finish))
-        self.__border_points_list = temp_list
+        _ = sorted(self.__border_points_list, key=lambda x: x[1] + self.__heuristic_distance(x[0], self.__finish))
+        self.__border_points_list = _
         return None
 
     def __extend_vertex(self):

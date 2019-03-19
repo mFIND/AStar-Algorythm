@@ -1,17 +1,17 @@
 from vertex import *
 
 
-class GraphGenerator:
+class ListToGraphGenerator:
     __list = None
     __x_dim = None
     __y_dim = None
-    __vertex_dict = None
+    __ver_dict = None
 
-    def __init__(self, list):
-        self.__list = list
-        self.__y_dim = len(list)
-        self.__x_dim = len(list[0])
-        self.__vertex_dict = {}
+    def __init__(self, init_list):
+        self.__list = init_list
+        self.__y_dim = len(init_list)
+        self.__x_dim = len(init_list[0])
+        self.__ver_dict = {}
 
     def get_start_and_finish_coordinates(self):
         return self.__list[0][0], self.__list[self.__y_dim - 1][1]
@@ -20,15 +20,14 @@ class GraphGenerator:
         for edge in self.__list:
             ver = []
             for i in range(2):
-                if str(edge[i]) in self.__vertex_dict:
-                    ver.append(self.__vertex_dict[str(edge[i])])
+                if str(edge[i]) in self.__ver_dict:
+                    ver.append(self.__ver_dict[str(edge[i])])
                 else:
                     ver.append(Vertex(edge[i]))
-                    self.__vertex_dict.update({str(edge[i]): ver[len(ver) - 1]})
+                    self.__ver_dict.update({str(edge[i]): ver[len(ver) - 1]})
             ver[0].add_new_neighbours(ver[1], edge[2])
             ver[1].add_new_neighbours(ver[0], edge[2])
-        return self.__vertex_dict[str(self.__list[0][0])], \
-               self.__vertex_dict[str(self.__list[len(self.__list) - 1][1])]
+        return self.__ver_dict[str(self.__list[0][0])], self.__ver_dict[str(self.__list[len(self.__list) - 1][1])]
 
 
 """
