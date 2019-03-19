@@ -23,11 +23,14 @@ class PathFinder:
 
     def __return_path(self):
         string = ""
+        out_list = list()
         path = self.__border_points_list[0]
         for i in range(2, len(path)):
             string += str(path[i].get_coordinates()) + " -> "
+            out_list.append(path[i].get_coordinates())
         string += str(path[0].get_coordinates())
-        return string
+        out_list.append(path[0].get_coordinates())
+        return string, out_list
 
     def __sort_border_points(self):
         temp_list = sorted(self.__border_points_list, key=lambda x: x[1] + self.__heuristic_distance(x[0], self.__finish))
