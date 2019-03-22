@@ -1,11 +1,7 @@
 class ListReader:
-    # None signifies the lack of a value
-    # You can make a variable private by starting it with __
     __file_name = None
     __list = None
 
-    # The constructor is called to set up or initialize an object
-    # self allows an object to refer to itself inside of the class
     def __init__(self, file_name):
         """
         :param file_name: filename of file that contain edges of a graph generated from graph_gen

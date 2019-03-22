@@ -41,6 +41,7 @@ class GraphGenerator:
         """
         Computes reduced distance between 2 multi dimensional points
 
+        :rtype: int
         :param in_list: list, where 2 first elements are lists of coordinates of the 1st and 2nd point in hyper space
         :return: returns distance between 2 multi dimensional points increased by random number from (0.5 to 1)
         """
@@ -74,17 +75,14 @@ class GraphGenerator:
 
         vertex = [[random.randrange(self.__max_range) for _ in range(self.__n_of_dim)] for _ in range(self.__n_of_ver)]
 
-        created_pairs = list()
+        created_pairs = {}
         for x in range(self.__n_of_edge):
             while True:
                 v = sorted([vertex[random.randrange(len(vertex))], vertex[random.randrange(len(vertex))]])
-                if v not in created_pairs:
-                    created_pairs.append(v)
+                if str(v) not in created_pairs:
+                    # noinspection PyTypeChecker
+                    created_pairs.update({str(v): v + [self.__dist(v)]})
                     break
 
-        for x in range(len(created_pairs)):
-            # noinspection PyTypeChecker
-            created_pairs[x].append(self.__dist(created_pairs[x]))
-
         self.__rand_state = random.getstate()
-        return created_pairs
+        return list(created_pairs.values())
